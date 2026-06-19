@@ -13,7 +13,6 @@ Proyek ini bertujuan untuk memprediksi tingkat/risiko depresi pada mahasiswa men
 - [Struktur Folder](#-struktur-folder)
 - [Cara Menjalankan (Local Setup)](#-cara-menjalankan-local-setup)
 - [Demo Aplikasi](#-demo-aplikasi)
-- [Kontributor](#-kontributor)
 
 ---
 
@@ -77,3 +76,82 @@ Dilakukan eksperimen komparatif antara 2 algoritma klasifikasi pada dataset yang
 <img width="580" height="203" alt="image" src="https://github.com/user-attachments/assets/e2460c96-1cf7-4d1c-aeff-eb3005584de2" />
 <img width="581" height="197" alt="image" src="https://github.com/user-attachments/assets/a9649cc4-1013-4fac-9c4f-c4688783c51c" />
 
+**Analisis Singkat:**
+Model **Random Forest** memberikan performa yang lebih baik dibanding Decision Tree, dengan kenaikan akurasi dari 69% menjadi 77%. Hal ini wajar karena Random Forest menggabungkan banyak pohon keputusan (*ensemble*) sehingga lebih tahan terhadap *overfitting* dan mampu menangkap pola hubungan antar fitur yang lebih kompleks dibanding satu Decision Tree saja. Berdasarkan analisis *feature importance* dari Random Forest, faktor-faktor seperti tekanan akademik dan jam belajar/kerja menjadi salah satu fitur dengan pengaruh terbesar terhadap prediksi risiko depresi (lihat detail urutan importance di notebook). Model akhir (`rf_model`) disimpan dalam file `model_depression.pkl` menggunakan `joblib` untuk selanjutnya digunakan pada aplikasi Streamlit.
+<img width="408" height="86" alt="image" src="https://github.com/user-attachments/assets/b7c5d371-cc5c-49b8-bd9c-05bb8afae3c0" />
+
+---
+
+## 📁 Struktur Folder
+
+```
+dashboard/
+│
+├── Proyek_Prediksi_Depresi.ipynb   # Notebook EDA, preprocessing, training & evaluasi model
+├── depression.csv                  # Dataset mentah dari Kaggle
+├── model_depression.pkl            # Model Random Forest hasil training (joblib)
+├── app.py                          # File utama dashboard Streamlit
+├── requirements.txt                # Daftar library yang dibutuhkan
+└── README.md
+```
+
+Lokasi project di komputer lokal:
+```
+C:\Users\ASUS\OneDrive - ITPLN\Documents\dashboard
+```
+
+---
+## ⚙️ Cara Menjalankan (Local Setup)
+
+Proyek ini dijalankan menggunakan **Anaconda Prompt**. Ikuti langkah berikut:
+
+### 1. Buka folder project
+```bash
+cd "C:\Users\ASUS\OneDrive - ITPLN\Documents\dashboard"
+```
+> Jika project belum ada di komputer dan masih di GitHub, clone dulu:
+> ```bash
+> git clone [ISI DI SINI: link repo kamu]
+> ```
+
+## 🎬 Demo Aplikasi
+
+Dashboard dibangun menggunakan **Streamlit** dan **Plotly**, terdiri dari 3 halaman utama yang dapat diakses melalui sidebar navigasi:
+
+1. **🏠 Home**
+   <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/e528c3f3-5941-4913-8dcf-acea351cb54d" />
+   Menampilkan ringkasan proyek: jumlah data, jumlah fitur, serta perbandingan akurasi Decision Tree (69%) vs Random Forest (77%) dalam bentuk bar chart interaktif, lengkap dengan detail *classification report* tiap model.
+
+   a. Grafik Perbandingan Decision Tree & Random Forest
+       <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/cc51a92b-ab98-49cc-bef5-fd02b5ca8b7e" />
+   b. Classification Report Tiap Model
+       <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/9c693fc0-287d-4fb6-9ab1-9030d1d98a7d" />
+      
+2. **📊 Analytics Dashboard**
+   <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/325da331-7238-4225-85fa-379dd130f226" />
+   Berisi visualisasi eksploratif interaktif: distribusi label depresi (pie chart), distribusi usia, perbandingan gender vs depresi, distribusi tekanan akademik & stres finansial, *feature importance* Random Forest, serta *confusion matrix* untuk masing-masing model.
+
+   a. Distribusi Depresi
+       <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/17e78c8b-6c18-41a2-a403-6b462a150864" />
+   b. Distribusi Usia
+       <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/a0db5062-653f-4e09-8623-7677263f260c" />
+   c. Perbandingan Gender dan Usia
+       <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/9e76b15c-57e2-4be2-808e-270bd4748d7a" />
+   d. Distribusi Tekanan Akademik
+       <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/beb7ae12-1d5b-49f5-bbbf-56f850ad81b7" />
+   e. Distribusi Stres Finansial
+       <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/208f4967-ec4e-4ea1-a3cd-c5660ee3e729" />
+   f. Feature Importance (Random Forest)
+       <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/0bee4482-8171-42f5-81e0-d6ac297007fb" />
+   g. Confusion Matrix Decision Tree
+       <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/c8b217d4-b1cf-4e9e-9f05-65f133b1bbf0" />
+   h. Confusion Matrix Random Forest
+       <img width="959" height="497" alt="image" src="https://github.com/user-attachments/assets/4ddef2a9-1b97-4df9-b322-78ab6ed66fb0" />
+
+
+3. **🔍 Prediction**
+   
+   Form input data mahasiswa baru (gender, usia, tekanan akademik, kepuasan studi, durasi tidur, pola makan, stres finansial, jam belajar) untuk melakukan inference langsung menggunakan model `model_depression.pkl`. Hasil prediksi ditampilkan beserta persentase probabilitas risiko dan rekomendasi tindak lanjut.
+
+---
+- Kamalia Kurniasari — 202432005
