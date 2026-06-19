@@ -1,12 +1,11 @@
-# Kamalia-Kurniasari_202432005
 # Prediksi Depresi Mahasiswa (Student Depression Prediction)
 
 Proyek ini bertujuan untuk memprediksi tingkat/risiko depresi pada mahasiswa menggunakan pendekatan *Machine Learning*, berdasarkan dataset dari Kaggle. Proyek ini dilengkapi dengan dashboard interaktif berbasis Streamlit untuk melakukan inference (prediksi) secara langsung.
 
 ---
 
-## 📌 Daftar Isi
-- [Problem Identification](#-problem-identification)
+## Daftar Isi
+- [Problem Identification](#-problem-identification) 
 - [Dataset](#-dataset)
 - [Data Processing](#-data-processing)
 - [Model & Hasil Evaluasi](#-model--hasil-evaluasi)
@@ -16,7 +15,7 @@ Proyek ini bertujuan untuk memprediksi tingkat/risiko depresi pada mahasiswa men
 
 ---
 
-## 🧠 Problem Identification
+## Problem Identification
 
 **Latar Belakang:**
 Mahasiswa berada pada masa transisi dari remaja akhir menuju dewasa awal, sebuah fase yang membuat mereka rentan terhadap gangguan kesehatan mental akibat tekanan akademik, sosial, dan ekonomi. Hal ini didukung oleh studi *Gambaran Kondisi Kesehatan Mental Mahasiswa* (Arfandi et al., 2025) yang dipublikasikan di *Journal of Mental Health Concerns* (Vol. 4, No. 2, 2025), yang melakukan survei terhadap 275 mahasiswa dari 13 perguruan tinggi di Kota Samarinda menggunakan kuesioner DASS-21. Hasil penelitian tersebut menunjukkan bahwa sekitar 30% mahasiswa mengalami gejala depresi dari kategori ringan hingga berat, dengan 9,8% di antaranya berada pada kategori depresi berat. Studi yang sama juga menemukan bahwa mahasiswa perempuan memiliki prevalensi depresi lebih tinggi (34,4%) dibanding laki-laki (26,7%), dan mahasiswa pada semester awal cenderung lebih rentan mengalami depresi (41%) dibanding semester pertengahan maupun akhir, yang dikaitkan dengan proses adaptasi terhadap lingkungan kampus dan sistem pembelajaran baru.
@@ -30,7 +29,7 @@ Faktor-faktor risiko depresi pada mahasiswa — seperti tekanan akademik, kepuas
 > Arfandi, M. A., Rahman, R. A., Gah, R. L., Asma, N., Mahendra, A. Z., & Rosandini, A. N. (2025). Gambaran kondisi kesehatan mental mahasiswa di Kota Samarinda, Kalimantan Timur. *Journal of Mental Health Concerns*, 4(2), 102–111. https://doi.org/10.56922/mhc.v4i2.1194
 
 ---
-## 📊 Dataset
+## Dataset
 
 - **Sumber:** Kaggle (file `depression.csv`) — (https://www.kaggle.com/datasets/hopesb/student-depression-dataset)
 - **Fitur yang digunakan:**
@@ -46,7 +45,7 @@ Faktor-faktor risiko depresi pada mahasiswa — seperti tekanan akademik, kepuas
 
 ---
 
-## 🧹 Data Processing
+## Data Processing
 
 Tahapan yang dilakukan terhadap data sebelum pemodelan:
 
@@ -65,7 +64,7 @@ Tahapan yang dilakukan terhadap data sebelum pemodelan:
 
 ---
 
-## 🤖 Model & Hasil Evaluasi
+## Model & Hasil Evaluasi
 
 Dilakukan eksperimen komparatif antara 2 algoritma klasifikasi pada dataset yang sama (split data 80% train, 20% test, `random_state=0`):
 
@@ -82,7 +81,7 @@ Model **Random Forest** memberikan performa yang lebih baik dibanding Decision T
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
 ```
 dashboard/
@@ -91,7 +90,6 @@ dashboard/
 ├── depression.csv                  # Dataset mentah dari Kaggle
 ├── model_depression.pkl            # Model Random Forest hasil training (joblib)
 ├── app.py                          # File utama dashboard Streamlit
-├── requirements.txt                # Daftar library yang dibutuhkan
 └── README.md
 ```
 
@@ -119,6 +117,7 @@ cd "C:\Users\ASUS\OneDrive - ITPLN\Documents\dashboard"
 Dashboard dibangun menggunakan **Streamlit** dan **Plotly**, terdiri dari 3 halaman utama yang dapat diakses melalui sidebar navigasi:
 
 1. **🏠 Home**
+   
    <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/e528c3f3-5941-4913-8dcf-acea351cb54d" />
    Menampilkan ringkasan proyek: jumlah data, jumlah fitur, serta perbandingan akurasi Decision Tree (69%) vs Random Forest (77%) dalam bentuk bar chart interaktif, lengkap dengan detail *classification report* tiap model.
 
@@ -128,30 +127,47 @@ Dashboard dibangun menggunakan **Streamlit** dan **Plotly**, terdiri dari 3 hala
        <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/9c693fc0-287d-4fb6-9ab1-9030d1d98a7d" />
       
 2. **📊 Analytics Dashboard**
+   
    <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/325da331-7238-4225-85fa-379dd130f226" />
    Berisi visualisasi eksploratif interaktif: distribusi label depresi (pie chart), distribusi usia, perbandingan gender vs depresi, distribusi tekanan akademik & stres finansial, *feature importance* Random Forest, serta *confusion matrix* untuk masing-masing model.
 
    a. Distribusi Depresi
        <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/17e78c8b-6c18-41a2-a403-6b462a150864" />
+       
    b. Distribusi Usia
        <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/a0db5062-653f-4e09-8623-7677263f260c" />
+       
    c. Perbandingan Gender dan Usia
        <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/9e76b15c-57e2-4be2-808e-270bd4748d7a" />
+       
    d. Distribusi Tekanan Akademik
        <img width="959" height="502" alt="image" src="https://github.com/user-attachments/assets/beb7ae12-1d5b-49f5-bbbf-56f850ad81b7" />
+       
    e. Distribusi Stres Finansial
        <img width="959" height="500" alt="image" src="https://github.com/user-attachments/assets/208f4967-ec4e-4ea1-a3cd-c5660ee3e729" />
+       
    f. Feature Importance (Random Forest)
        <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/0bee4482-8171-42f5-81e0-d6ac297007fb" />
+       
    g. Confusion Matrix Decision Tree
        <img width="959" height="499" alt="image" src="https://github.com/user-attachments/assets/c8b217d4-b1cf-4e9e-9f05-65f133b1bbf0" />
+       
    h. Confusion Matrix Random Forest
        <img width="959" height="497" alt="image" src="https://github.com/user-attachments/assets/4ddef2a9-1b97-4df9-b322-78ab6ed66fb0" />
 
-
 3. **🔍 Prediction**
    
+   <img width="959" height="503" alt="image" src="https://github.com/user-attachments/assets/e74412a0-5733-4ab8-ae9a-c6adda1b6f77" />
    Form input data mahasiswa baru (gender, usia, tekanan akademik, kepuasan studi, durasi tidur, pola makan, stres finansial, jam belajar) untuk melakukan inference langsung menggunakan model `model_depression.pkl`. Hasil prediksi ditampilkan beserta persentase probabilitas risiko dan rekomendasi tindak lanjut.
 
+   Tampilan ketika hasil prediksinya berisiko tinggi depresi:
+   
+   <img width="614" height="240" alt="image" src="https://github.com/user-attachments/assets/fdef4505-0411-4b9e-ae13-50dc78ae7bf6" />
+
+   Tampilan ketika hasil prediksinya berisiko rendah depresi:
+   
+   <img width="608" height="238" alt="image" src="https://github.com/user-attachments/assets/3dbb654a-e639-43b9-8420-315a2f861079" />
+
+
 ---
-- Kamalia Kurniasari — 202432005
+- **Kamalia Kurniasari — 202432005**
