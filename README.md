@@ -91,6 +91,7 @@ dashboard/
 ├── depression.csv                  # Dataset mentah dari Kaggle
 ├── model_depression.pkl            # Model Random Forest hasil training (joblib)
 ├── app.py                          # File utama dashboard Streamlit
+├── requirements.txt                # Daftar library + versi yang dibutuhkan
 └── README.md
 ```
 
@@ -117,16 +118,21 @@ Buka terminal atau command prompt anda, lalu jalankan:
 > cd Kamalia-Kurniasari_202432005
 > ```
 
-3. Install Library yang Dibutuhkan
+3. Buat Environment Anaconda Khusus untuk Project Ini
 
-> streamlit,
-> pandas,
-> numpy,
-> joblib,
-> plotly,
-> scikit-learn
+```
+conda create -n depresi-env python=3.11 -y
+conda activate depresi-env
+```
+> Setelah aktif, di depan baris perintah akan berubah jadi `(depresi-env)`. Setiap kali ingin menjalankan dashboard ini secara lokal, jalankan dulu `conda activate depresi-env` sebelum lanjut ke langkah berikutnya.
 
-4. Jalankan Dashboard
+4. Install Library yang Dibutuhkan
+
+```
+pip install -r requirements.txt
+```
+
+5. Jalankan Dashboard
 ``` 
 streamlit run app.py
 ``` 
@@ -195,6 +201,9 @@ Dashboard dibangun menggunakan **Streamlit** dan **Plotly**, terdiri dari 3 hala
    
    <img width="608" height="238" alt="image" src="https://github.com/user-attachments/assets/3dbb654a-e639-43b9-8420-315a2f861079" />
 
+**🌐 Live Demo:** https://kamalia-kurniasari202432005-project.streamlit.app/
+
+> Catatan: Aplikasi dijalankan secara online melalui Streamlit Community Cloud, dan juga dapat dijalankan secara lokal mengikuti panduan pada bagian [Cara Menjalankan (Local Setup)](#-cara-menjalankan-local-setup) di atas.
 
 ---
 - **Kamalia Kurniasari — 202432005**
