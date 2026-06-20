@@ -77,6 +77,7 @@ Dilakukan eksperimen komparatif antara 2 algoritma klasifikasi pada dataset yang
 
 **Analisis Singkat:**
 Model **Random Forest** memberikan performa yang lebih baik dibanding Decision Tree, dengan kenaikan akurasi dari 69% menjadi 77%. Hal ini wajar karena Random Forest menggabungkan banyak pohon keputusan (*ensemble*) sehingga lebih tahan terhadap *overfitting* dan mampu menangkap pola hubungan antar fitur yang lebih kompleks dibanding satu Decision Tree saja. Berdasarkan analisis *feature importance* dari Random Forest, faktor-faktor seperti tekanan akademik dan jam belajar/kerja menjadi salah satu fitur dengan pengaruh terbesar terhadap prediksi risiko depresi (lihat detail urutan importance di notebook). Model akhir (`rf_model`) disimpan dalam file `model_depression.pkl` menggunakan `joblib` untuk selanjutnya digunakan pada aplikasi Streamlit.
+
 <img width="408" height="86" alt="image" src="https://github.com/user-attachments/assets/b7c5d371-cc5c-49b8-bd9c-05bb8afae3c0" />
 
 ---
@@ -99,20 +100,46 @@ C:\Users\ASUS\OneDrive - ITPLN\Documents\dashboard
 ```
 
 ---
-## ⚙️ Cara Menjalankan (Local Setup)
+## Cara Menjalankan (Local Setup)
 
-Proyek ini dijalankan menggunakan **Anaconda Prompt**. Ikuti langkah berikut:
+Proyek ini dijalankan menggunakan **Anaconda Prompt**. Ikuti langkah - langkah berikut:
 
-### 1. Buka folder project
-```bash
-cd "C:\Users\ASUS\OneDrive - ITPLN\Documents\dashboard"
-```
+1. Prasyarat
+
+Pastikan kamu sudah menginstal Anaconda (sudah termasuk Python di dalamnya).
+
+2. Clone Repository
+
+Buka terminal atau command prompt anda, lalu jalankan:
 > Jika project belum ada di komputer dan masih di GitHub, clone dulu:
-> ```bash
-> git clone [ISI DI SINI: link repo kamu]
+> ``` 
+> git clone https://github.com/kamaliakurniasari92-cyber/Kamalia-Kurniasari_202432005.git
+> cd Kamalia-Kurniasari_202432005
 > ```
 
-## 🎬 Demo Aplikasi
+3. Install Library yang Dibutuhkan
+
+> streamlit,
+> pandas,
+> numpy,
+> joblib,
+> plotly,
+> scikit-learn
+
+4. Jalankan Dashboard
+``` 
+streamlit run app.py
+``` 
+Setelah perintah di atas dijalankan, dashboard akan otomatis terbuka di browser pada alamat:
+``` 
+http://localhost:8501
+```
+Catatan: Jika ingin melihat proses training model dari awal (EDA, preprocessing, hingga evaluasi), buka file Proyek_Prediksi_Depresi.ipynb menggunakan Jupyter Notebook:
+``` 
+jupyter notebook Proyek_Prediksi_Depresi.ipynb
+```
+
+## Demo Aplikasi
 
 Dashboard dibangun menggunakan **Streamlit** dan **Plotly**, terdiri dari 3 halaman utama yang dapat diakses melalui sidebar navigasi:
 
